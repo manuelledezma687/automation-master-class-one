@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:login": "playwright test --grep @login",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:prod": "playwright test --grep @prod",
+    "test:chromium": "playwright test tests/login.spec.ts --project=chromium",
+    "test:safari": "playwright test tests/login.spec.ts --project=safari",
+    "report": "playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

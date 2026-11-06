@@ -8,6 +8,8 @@ type PageFixtures = {
     loginPage: LoginPage;
     homePage: HomePage;
     modalCookies: ModalCookies;
+    loginReady: LoginPage;
+    logtime: void
 }
 
 export const test = base.extend<PageFixtures>(
@@ -22,6 +24,16 @@ export const test = base.extend<PageFixtures>(
         modalCookies: async({page}, use) => {
             await use(new ModalCookies(page));
         },
+        loginReady: async({page,modalCookies, loginPage}, use) => {
+            await page.goto('/login');
+            await modalCookies.clickToAcceptModalCookies();
+            await use(loginPage);
+        }, 
+        logtime: [ async({}, use, testInfo) => {
+            const inicio = Date.now();
+            await use();
+            console.log(` ${testInfo.title}: ${Date.now() - inicio} ms`);
+        }, { auto: true} ],
     }
 );
 
