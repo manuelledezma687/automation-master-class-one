@@ -10,7 +10,13 @@
     "test:prod": "playwright test --grep @prod",
     "test:chromium": "playwright test tests/login.spec.ts --project=chromium",
     "test:safari": "playwright test tests/login.spec.ts --project=safari",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "bdd": "bddgen && playwright test --project=bdd",
+    "bdd:smoke": "bddgen && playwright test --project=bdd --grep @smoke",
+    "bdd:login": "bddgen && playwright test --project=bdd --grep @login",
+    "bdd:negative": "bddgen && playwright test --project=bdd --grep @negative",
+    "bdd:table": "bddgen && playwright test --project=bdd --grep @table",
+    "bdd:visual": "bddgen && playwright test --project=bdd --grep @visual"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +24,8 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.64.1",
-    "@types/node": "^26.6.6"
+    "@types/node": "^26.6.6",
+    "playwright-bdd": "^9.2.1"
   },
   "dependencies": {
     "dotenv": "^18.0.9"

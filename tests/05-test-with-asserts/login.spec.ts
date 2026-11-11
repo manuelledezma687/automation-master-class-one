@@ -9,7 +9,7 @@ const password = process.env.USER_PASSWORD!
 test('User can see the login page with soft assertion', { tag: ["@soft"] }, async ({ page }) => {
   const submit = page.getByRole('button', { name: 'Log in' });
   await page.goto("/login");
-  await expect.soft(submit).toBeHidden();
+  await expect(submit).toBeHidden();
   await expect(submit).toBeEnabled();
   await expect(page).toHaveURL("/login");
   await expect(page.getByRole('textbox', { name: 'Password' })).toBeEmpty();

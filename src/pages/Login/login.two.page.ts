@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-
+import { loginLocators as L } from "./locators";
 
 
 export class LoginPage {
@@ -11,15 +11,15 @@ export class LoginPage {
     }
 
     async fillEmail(email: string) {
-        await this.page.getByRole('textbox', { name: 'Email' }).fill(email);
+        await this.page.locator(L.emailInput).fill(email);
     }
 
     async fillPassword(password: string) {
-        await this.page.getByRole('textbox', { name: 'Password' }).fill(password);
+        await this.page.locator(L.passwordInput).fill(password);
     }
 
     async clickSubmitButton(){
-        await this.page.getByRole('button', { name: 'Log in' }).click();
+        await this.page.locator(L.submitButton).click();
     }
 
     async loginUser(email: string, password: string) {
